@@ -1,0 +1,224 @@
+@import '~antd/lib/style/themes/default.less';
+
+@pro-header-hover-bg: rgba(0, 0, 0, 0.025);
+.tag{
+  height: @layout-header-height;
+  vertical-align: top;
+  line-height: @layout-header-height;
+}
+.tab{
+  height: 60px;
+  vertical-align: top;
+  line-height: @layout-header-height;
+  background-color: #13C2C2;
+}
+.button{
+  height: @layout-header-height;
+  vertical-align: top;
+  line-height: @layout-header-height;
+  border:0px;
+  border-radius:0px;
+  margin: 0px;
+  padding: 0px;
+}
+.iconButton{
+  // height: @layout-header-height;
+  // vertical-align: top;
+  // line-height: @layout-header-height;
+  border:0px;
+  border-radius:0px;
+  margin: 0px;
+  padding: 0px;
+}
+.header {
+  position: relative;
+  height: @layout-header-height;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  :global(.ant-tag) {
+    margin-right: 0px;
+    border-bottom:0px solid red;
+    border-radius:0px;
+    border:0px;
+  }
+  // :global(.ant-button) {
+  //   margin-right: 0px;
+  //   border-bottom:0px solid red;
+  //   border-radius:0px;
+  //   border:0px;
+  // }
+}
+
+.logo {
+  display: inline-block;
+  height: @layout-header-height;
+  padding: 0 0 0 24px;
+  font-size: 20px;
+  line-height: @layout-header-height;
+  vertical-align: top;
+  cursor: pointer;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+  :global(.ant-dropdown-menu-item) {
+    min-width: 160px;
+  }
+}
+
+.trigger {
+  height: @layout-header-height;
+  padding: ~'calc((@{layout-header-height} - 20px) / 2)' 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  &:hover {
+    background: @pro-header-hover-bg;
+  }
+}
+.buttonTrigger {
+  height: @layout-header-height;
+  //padding: ~'calc((@{layout-header-height} - 20px) / 2)' 20px;
+  //font-size: 20px;
+  padding: 13px 5px 8px 7px;
+  //border-left:1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  &:hover {
+    background: @pro-header-hover-bg;
+    //color:#fff;
+  }
+}
+.buttonSelectTrigger {
+  height: @layout-header-height;
+  //padding: ~'calc((@{layout-header-height} - 15px) / 2)' 30px;
+  //font-size: 20px;
+  padding: 13px 5px 8px 7px;
+  color:#fff;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  //&:hover {
+    background: @primary-color;
+ // }
+}
+.iconTrigger {
+  height: @layout-header-height;
+  //padding: ~'calc((@{layout-header-height} - 20px) / 2)' 20px;
+  font-size: 8px;
+  cursor: pointer;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius:10px;
+  text-align: center;
+  transition: all 0.3s, padding 0s;
+  &:hover {
+    background: #EAEAEA;
+    color:@text-color;
+  }
+}
+.iconSelectTrigger {
+  height: @layout-header-height;
+  //padding: ~'calc((@{layout-header-height} - 20px) / 2)' 20px;
+  font-size: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: center;
+  cursor: pointer;
+  border-radius:10px;
+  transition: all 0.3s, padding 0s;
+  &:hover {
+    background: #EAEAEA;
+    color:@text-color;
+  }
+}
+.right {
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  .action {
+    display: inline-block;
+    height: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    > i {
+      color: @text-color;
+      vertical-align: middle;
+    }
+    &:hover {
+      background: @pro-header-hover-bg;
+    }
+    &:global(.opened) {
+      background: @pro-header-hover-bg;
+    }
+  }
+  .search {
+    padding: 0 12px;
+    &:hover {
+      background: transparent;
+    }
+  }
+  .account {
+    .avatar {
+      margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
+      margin-right: 8px;
+      color: @primary-color;
+      vertical-align: top;
+      background: rgba(255, 255, 255, 0.85);
+    }
+  }
+}
+
+.dark {
+  height: @layout-header-height;
+  .action {
+    color: rgba(255, 255, 255, 0.85);
+    > i {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    &:hover,
+    &:global(.opened) {
+      background: @primary-color;
+    }
+    :global(.ant-badge) {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+}
+
+@media only screen and (max-width: @screen-md) {
+  .header {
+    :global(.ant-divider-vertical) {
+      vertical-align: unset;
+    }
+    .name {
+      display: none;
+    }
+    i.trigger {
+      padding: 22px 12px;
+    }
+    .logo {
+      position: relative;
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      background: #fff;
+      .account {
+        .avatar {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
