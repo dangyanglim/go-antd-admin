@@ -1,0 +1,43 @@
+definitions:
+  result.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: 有角色权限功能的管理后台
+  license: {}
+  title: go-antd-admin API
+  version: "1.0"
+paths:
+  /register:
+    get:
+      parameters:
+      - description: name
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: password
+        in: query
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/result.Response'
+      summary: 注册用户
+swagger: "2.0"
