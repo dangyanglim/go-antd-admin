@@ -2,14 +2,14 @@ package database
 
 import (
 	//"database/sql"
-	"fmt"
-	"github.com/garyburd/redigo/redis"
+	//"fmt"
+	//"github.com/garyburd/redigo/redis"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	//"gopkg.in/mgo.v2"
 	"log"
 )
-var Redis redis.Conn
+//var Redis redis.Conn
 var Mysql *gorm.DB
 //var MogSession *mgo.Session
 func init() {
@@ -22,11 +22,11 @@ func Config(mysql_url string,redis_url string) {
 		log.Fatal(err.Error())
 	}
 	
-	Redis, err = redis.Dial("tcp", redis_url)
-	if err != nil {
-		fmt.Println("Connect to redis error", err)
-		return
-	}
+	// Redis, err = redis.Dial("tcp", redis_url)
+	// if err != nil {
+	// 	fmt.Println("Connect to redis error", err)
+	// 	return
+	// }
 	
 
 }

@@ -11,6 +11,7 @@ var MsgFlags = map[int]string{
 	ERROR_NOT_EXIST_USER:			 "用户不存在",
 	ERROR_EXIST_USER:			 	"用户已存在",
 	ERROR_CREATE_USER:			 	"用户创建失败",
+	ERROR_CREATE_MENU:			 	"菜单创建失败",
 	ERROR_EXIST_TAG:                 "已存在该标签名称",
 	ERROR_EXIST_TAG_FAIL:            "获取已存在标签失败",
 	ERROR_NOT_EXIST_TAG:             "该标签不存在",

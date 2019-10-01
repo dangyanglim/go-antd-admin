@@ -2,5 +2,5 @@
     "mongo_url": "120.78.15.36:27017",
     "redis_url": "127.0.0.1:6379",
     "port": ":9045",
-    "mysql_url": "root@tcp(127.0.0.1:3306)/go_admin?parseTime=true"
+    "mysql_url": "root@tcp(127.0.0.1:3306)/go_admin?charset=utf8&parseTime=true&loc=Local"
   }

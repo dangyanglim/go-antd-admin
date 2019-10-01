@@ -2,6 +2,7 @@ package models
 import (
 	db "go-antd-admin/database"
 	"github.com/jinzhu/gorm"
+	"fmt"
 )
 type User struct {
 	gorm.Model
@@ -11,7 +12,14 @@ type User struct {
 	//Token string `json:"token,omitempty"`
 }
 func Config() {
-	db.Mysql.AutoMigrate(&User{})
+	db.Mysql.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&User{})
+	db.Mysql.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&Menu{})
+	var menu Menu
+	
+	if err:=db.Mysql.First(&menu).Error;err!=nil{
+		fmt.Println(err)
+		db.Mysql.Save(&Menu{Path:"/",Name:"kaishi",ParentID:1})
+	}
 }
 func (p *User) GetUserByName(name string) (user User, err error) {
 	err=db.Mysql.Where("name=?", name).Find(&user).Error
