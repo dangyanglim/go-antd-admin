@@ -28,6 +28,28 @@ export default [
       // dashboard
       { path: '/', redirect: '/dashboard/analysis', authority: ['admin', 'user'] },
       {
+        path: '/system',
+        name: 'system',
+        icon: 'dashboard',
+        routes: [
+          {
+            path: '/system/menu',
+            name: 'menu',
+            component: './System/Menu',
+          },
+          {
+            path: '/system/monitor',
+            name: 'user',
+            component: './Dashboard/Monitor',
+          },
+          {
+            path: '/system/workplace',
+            name: 'role',
+            component: './Dashboard/Workplace',
+          },
+        ],
+      },
+      {
         path: '/dashboard',
         name: 'dashboard',
         icon: 'dashboard',

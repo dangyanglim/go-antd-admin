@@ -83,9 +83,9 @@ export default {
   proxy: {
     '/api': {
       //target: 'https://preview.pro.ant.design',
-     target: 'http://fenghuangyu.cn:1043',
+     target: 'http://127.0.0.1:9045',
       changeOrigin: true,
-     // pathRewrite: { '^/server': '' },
+      pathRewrite: { '^/api': '/v1/demo' },
     },
     '/v1': {
       //target: 'https://preview.pro.ant.design',
