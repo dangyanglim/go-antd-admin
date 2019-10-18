@@ -3,6 +3,7 @@ import isEqual from 'lodash/isEqual';
 import { formatMessage } from 'umi-plugin-react/locale';
 import Authorized from '@/utils/Authorized';
 import { menu } from '../defaultSettings';
+import { getRoutes } from '@/services/api';
 
 const { check } = Authorized;
 
@@ -108,10 +109,21 @@ export default {
   },
 
   effects: {
+    *getRoutes({ payload }, { call,put }) {
+      //console.log("kkkkkbbb")
+      const response = yield call(getRoutes, payload);
+      return response
+    },
+    *updateRoutes({ payload }, { call,put }) {
+      //console.log(this.state.routerData)
+      console.log("dddddddd")
+    },
     *getMenuData({ payload }, { put }) {
       const { routes, authority, path } = payload;
+      console.log(routes, authority, path )
       const originalMenuData = memoizeOneFormatter(routes, authority, path);
       const menuData = filterMenuData(originalMenuData);
+      console.log(menuData)
       const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(originalMenuData);
       yield put({
         type: 'save',

@@ -51,7 +51,7 @@ class StandardTable extends PureComponent {
     const {columns} = nextProps;
     // console.log(columns)
     // console.log(prevState.columns)
-    if (nextProps.selectedRows.length === 0) {
+    if (nextProps.selectedRows&&nextProps.selectedRows.length === 0) {
       const needTotalList = initTotalList(nextProps.columns);
       return {
         selectedRowKeys: [],
@@ -105,7 +105,7 @@ class StandardTable extends PureComponent {
     const { selectedRowKeys, needTotalList } = this.state;
     const { data = {}, rowKey, loading,handleResize,...rest } = this.props;
     const { list = [], pagination } = data;
-    pagination.showTotal=this.showTotal;
+    if(pagination)pagination.showTotal=this.showTotal;
     const paginationProps = {
       showSizeChanger: true,
       showQuickJumper: true,
@@ -116,7 +116,7 @@ class StandardTable extends PureComponent {
       ...col,
       onHeaderCell: (column) => ({
         width: column.width,
-        onResize: handleResize(index),
+        onResize: handleResize?handleResize(index):null,
       }),
     }));
     // console.log(columns)

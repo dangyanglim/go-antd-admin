@@ -40,6 +40,7 @@ class UserLayout extends Component {
       dispatch,
       route: { routes, authority },
     } = this.props;
+    console.log(routes, authority)
     dispatch({
       type: 'menu/getMenuData',
       payload: { routes, authority },

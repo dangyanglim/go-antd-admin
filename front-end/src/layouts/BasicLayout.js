@@ -55,10 +55,32 @@ class BasicLayout extends React.Component {
     dispatch({
       type: 'setting/getSetting',
     });
+
     dispatch({
-      type: 'menu/getMenuData',
-      payload: { routes, path, authority },
+      type: 'menu/getRoutes',
+      payload: {
+        id: 1,
+      },
+    }).then(result => {
+      //console.log(result)
+      var routess=[]  
+      if(result.code==200){
+        routess.push(routes[0])
+        for(var i=0;i<result.data.length;i++){
+          routess.push(result.data[i])
+        }
+      }else{
+        routess=routes;
+      }
+      console.log(routes, routess)
+      dispatch({
+        type: 'menu/getMenuData',
+        payload: { routes:routess, path, authority },
+      });
     });
+
+    
+
   }
 
   getContext() {

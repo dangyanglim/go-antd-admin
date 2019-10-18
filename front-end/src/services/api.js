@@ -124,3 +124,21 @@ export async function queryNotices(params = {}) {
 export async function getFakeCaptcha(mobile) {
   return request(`/api/captcha?mobile=${mobile}`);
 }
+export async function getMenuTrees(params) {
+  const { id } = params;
+  return request(`/v1/getAllMenus?id=${id}`);
+}
+export async function createMenu(params) {
+  return request(`/v1/createMenu?${stringify(params)}`);
+}
+export async function deleteMenu(params) {
+  const { id } = params;
+  return request(`/v1/deleteMenu?id=${id}`);
+}
+export async function editMenu(params) {
+  return request(`/v1/editMenu?${stringify(params)}`);
+}
+export async function getRoutes(params) {
+  const { id } = params;
+  return request(`/v1/getMenus?id=${id}`);
+}
