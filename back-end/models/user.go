@@ -18,7 +18,7 @@ func Config() {
 	
 	if err:=db.Mysql.First(&menu).Error;err!=nil{
 		fmt.Println(err)
-		db.Mysql.Save(&Menu{Path:"/",Name:"kaishi",ParentID:1})
+		db.Mysql.Save(&Menu{Path:"/",Name:"首页",ParentID:0})
 	}
 }
 func (p *User) GetUserByName(name string) (user User, err error) {
