@@ -3,6 +3,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-antd-admin/controllers/user"
 	"go-antd-admin/controllers/menu"
+	"go-antd-admin/controllers/Department"
 	"go-antd-admin/controllers/demo"
 	"go-antd-admin/middleware/jwt"
 )
@@ -18,6 +19,10 @@ func InitRouter() *gin.Engine {
 	r.GET("/v1/getMenus",menu.GetMenus)
 	r.GET("/v1/getMenusManage",menu.GetMenusManage)
 	r.GET("/v1/getAllMenus",menu.GetAllMenus)
+	r.GET("/v1/getAllDepartments",department.GetAllDepartments)
+	r.GET("/v1/createDepartment",department.CreateDepartment)
+	r.GET("/v1/editDepartment",department.EditDepartment)
+	r.GET("/v1/deleteDepartment",department.DeleteDepartment)
 	//r.GET("/api/currentUser",user.CurrentUser)
 	taR := r.Group("/v1/auth")
     taR.Use(jwt.JWTAuth())

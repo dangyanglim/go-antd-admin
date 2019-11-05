@@ -14,11 +14,17 @@ type User struct {
 func Config() {
 	db.Mysql.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&User{})
 	db.Mysql.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&Menu{})
+	db.Mysql.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&Department{})
 	var menu Menu
+	var depart Department
 	
 	if err:=db.Mysql.First(&menu).Error;err!=nil{
 		fmt.Println(err)
 		db.Mysql.Save(&Menu{Path:"/",Name:"首页",ParentID:0})
+	}
+	if err:=db.Mysql.First(&depart).Error;err!=nil{
+		fmt.Println(err)
+		db.Mysql.Save(&Department{Name:"公司"})
 	}
 }
 func (p *User) GetUserByName(name string) (user User, err error) {
