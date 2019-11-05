@@ -31,13 +31,14 @@ function initTotalList(columns) {
 class StandardTable extends PureComponent {
   constructor(props) {
     super(props);
-    const { columns } = props;
+    const { columns,scroll } = props;
     const needTotalList = initTotalList(columns);
 
     this.state = {
       selectedRowKeys: [],
       needTotalList,
       columns,
+      scroll,
       components: {
         header: {
         cell: ResizeableTitle,
@@ -88,22 +89,22 @@ class StandardTable extends PureComponent {
   cleanSelectedKeys = () => {
     this.handleRowSelectChange([], []);
   };
-  handleResize = (index) => (e, size) => {
-    console.log('handleResize');
+  // handleResize = (index) => (e, size) => {
+  //   console.log('handleResize');
     
-    this.setState(({ columns }) => {
-      const nextColumns = [...columns];
-      nextColumns[index] = {
-        ...nextColumns[index],
-        width: size.size.width,
-      };
-      // console.log(nextColumns)
-      return { columns: nextColumns };
-    });
-  };
+  //   this.setState(({ columns }) => {
+  //     const nextColumns = [...columns];
+  //     nextColumns[index] = {
+  //       ...nextColumns[index],
+  //       width: size.size.width,
+  //     };
+  //     // console.log(nextColumns)
+  //     return { columns: nextColumns };
+  //   });
+  // };
   render() {
-    const { selectedRowKeys, needTotalList } = this.state;
-    const { data = {}, rowKey, loading,handleResize,...rest } = this.props;
+    const { selectedRowKeys, needTotalList,scroll } = this.state;
+    const { data = {}, fixed,rowKey, loading,handleResize,...rest } = this.props;
     const { list = [], pagination } = data;
     if(pagination)pagination.showTotal=this.showTotal;
     const paginationProps = {
@@ -163,7 +164,7 @@ class StandardTable extends PureComponent {
           dataSource={list}
           pagination={paginationProps}
           onChange={this.handleTableChange}
-          scroll={{ x: 1800 ,y:400}}
+          scroll={scroll?scroll:{}}
           size={"small"}
           loading={loading}
          // {...rest}

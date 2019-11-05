@@ -142,3 +142,17 @@ export async function getRoutes(params) {
   const { id } = params;
   return request(`/v1/getMenus?id=${id}`);
 }
+export async function getDepartments(params) {
+  const { id } = params;
+  return request(`/v1/getAllDepartments?id=${id}`);
+}
+export async function addDepartment(params) {
+  return request(`/v1/createDepartment?${stringify(params)}`);
+}
+export async function editDepartment(params) {
+  return request(`/v1/editDepartment?${stringify(params)}`);
+}
+export async function deleteDepartment(params) {
+  const { id } = params;
+  return request(`/v1/deleteDepartment?id=${id}`);
+}

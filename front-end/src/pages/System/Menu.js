@@ -50,10 +50,10 @@ const CreateForm = Form.create()(props => {
           rules: [{ required: true, message: '不能为空！', min: 1 }],
         })(<Input placeholder="请输入" />)}
       </FormItem>
-      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="页面路径">
+      {/* <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="页面路径">
         {form.getFieldDecorator('component', {
         })(<Input placeholder="请输入" />)}
-      </FormItem>
+      </FormItem> */}
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="菜单图标">
         {form.getFieldDecorator('icon', {
         })(<Input placeholder="请输入" />)}
@@ -92,11 +92,11 @@ const CreateEditForm = Form.create()(props => {
           rules: [{ required: true, message: '不能为空！', min: 1 }],
         })(<Input placeholder="请输入" />)}
       </FormItem>
-      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="页面路径">
+      {/* <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="页面路径">
         {form.getFieldDecorator('component', {
           initialValue:selectedMenu.component,
         })(<Input placeholder="请输入" />)}
-      </FormItem>
+      </FormItem> */}
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="菜单图标">
         {form.getFieldDecorator('icon', {
           initialValue:selectedMenu.icon,
@@ -105,20 +105,6 @@ const CreateEditForm = Form.create()(props => {
     </Modal>
   );
 });
-// const dataSource = [
-//   {
-//     key: '1',
-//     name: '胡彦斌',
-//     age: 32,
-//     address: '西湖区湖底公园1号',
-//   },
-//   {
-//     key: '2',
-//     name: '胡彦祖',
-//     age: 42,
-//     address: '西湖区湖底公园1号',
-//   },
-// ];
 
 const columns = [
   {
@@ -136,11 +122,11 @@ const columns = [
     dataIndex: 'path',
     key: 'path',
   },
-  {
-    title: '页面路径',
-    dataIndex: 'component',
-    key: 'component',
-  },
+  // {
+  //   title: '页面路径',
+  //   dataIndex: 'component',
+  //   key: 'component',
+  // },
   {
     title: '菜单图标',
     dataIndex: 'icon',
@@ -163,7 +149,8 @@ class MenuManagePage extends Component {
     treeData:[],
     modalVisible:false,
     editModalVisible:false,
-    selectedMenu:{key:'',title:'',path:'',component:''}
+    selectedMenu:{key:'',title:'',path:'',component:''},
+    autoExpandParent:true
   };
 
   onSelect = (selectedKeys, info) => {
@@ -238,6 +225,9 @@ class MenuManagePage extends Component {
         id: 1,
       },
     });
+    this.setState({
+      autoExpandParent:true
+    })
   }
   showAddModal=flag=>{
 
@@ -318,7 +308,6 @@ class MenuManagePage extends Component {
     }
     )
   ;
-
   render() {
   const {menuManage} =this.props;
   const {modalVisible,selectedMenu,editModalVisible}=this.state;
@@ -337,6 +326,7 @@ class MenuManagePage extends Component {
         <div className={styles.left}>
         {treeData?<Tree
             defaultExpandAll
+            autoExpandParent={this.state.autoExpandParent}
             onSelect={this.onSelect}
           >
             <TreeNode title={treeData.title} key={treeData.key} dataRef={treeData}>

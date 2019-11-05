@@ -942,6 +942,7 @@ class TableList extends PureComponent {
               selectedRows={selectedRows}
               loading={loading}
               data={data}
+              scroll={{ x: 1800 ,y:400}}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
             />
